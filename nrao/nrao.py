@@ -27,5 +27,7 @@ def index() -> rx.Component:
     )
 
 
-app = rx.App()
+app = rx.App(
+    theme=rx.theme(accent_color="cyan")
+)
 app.add_page(index)

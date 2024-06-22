@@ -20,42 +20,39 @@ def profile_image():
 
 def profile_info():
     return rx.vstack(
-        rx.el.h1(
+        rx.heading(
             "Nikhil Rao", 
-            color=rx.color("gray", 12),
             font_size="1.5rem",
             line_height="2rem",
             font_weight="600",
-            margin_bottom="0.5rem",
         ),
-        rx.el.h2(
-            "CEO at ", rx.link("Reflex", href="https://reflex.dev", is_external=True),
-            color=rx.color("gray", 11),
-            font_size="1.25rem",
-            line_height="1.75rem",
-        ),
-        rx.text(
-            "Passionate about creating beautiful and functional web experiences. With over 5 years of experience in front-end development and UI/UX design, I bring ideas to life through clean code and intuitive interfaces.",
-            color=rx.color("gray", 11),
+        rx.markdown(
+            """👋 Welcome to my page!
+
+I'm building [Reflex](https://reflex.dev) - an [open source](https://github.com/reflex-dev/reflex) framework to build web apps with Python and generative AI.
+
+If you're interested in web development, AI, or just want to chat, feel free to [reach out](mailto:nikhil@reflex.dev). We're hiring too! 🚀
+            """,
             margin_bottom="1.5rem",
         ),
-        social_links(),
-        contact_button(),
-        background_image="background-image",
+        rx.hstack(
+            social_links(),
+            contact_button(),
+            align="center",
+            spacing="7"
+        ),
         style={"@media (min-width: 768px)": {"width": "66.666667%"}},
         padding="2rem",
-        background_color=rx.color("gray", 3),
+        background_color=rx.color("accent", 1),
     )
 
 
 def social_links():
-    return rx.flex(
+    return rx.hstack(
         social_icon("twitter", "https://twitter.com/nikhi1rao"),
         social_icon("github", "https://github.com/picklelo"),
         social_icon("linkedin", "https://linkedin.com/in/nrao95"),
-        column_gap="1rem",
-        display="flex",
-        margin_bottom="1.5rem",
+        spacing="4",
     )
 
 
@@ -63,10 +60,10 @@ def social_icon(icon, link):
     return rx.link(
         rx.icon(
             icon,
+            # color=rx.color("accent", 9),
+            # _hover={"color": rx.color("acce", 10)}
         ),
         href=link,
-        color=rx.color("gray", 8),
-        _hover={"color": rx.color("gray", 10)}
     )
 
 
@@ -74,7 +71,6 @@ def contact_button():
     return rx.button(
         "Get in touch", 
         size="4",
-        color_scheme="gray",
         variant="outline",
         border_radius="0.25rem",
     )
@@ -90,10 +86,10 @@ def badge():
                 display="flex",
                 justify_content="center",
                 padding="2rem",
-                background_color=rx.color("gray", 4),
+                background_color=rx.color("accent", 2),
             ),
             profile_info(),
-            background_color=rx.color("gray", 1),
+            background_color=rx.color("accent", 1),
             flex_direction="column",
             display="flex",
             max_width="56rem",
